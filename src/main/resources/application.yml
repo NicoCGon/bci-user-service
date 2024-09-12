@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: user-service
+  jackson:
+    property-naming-strategy: SNAKE_CASE
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: false
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+  flyway:
+    enabled: true
+    validate-on-migrate: true
+  h2:
+    console:
+      enabled: true
+      path: /console
+
+  datasource:
+    url: jdbc:h2:mem:BCIDev
+    driver-class-name: org.h2.Driver
+
+server:
+  port: 8080
+  servlet:
+      context-path: /bci
