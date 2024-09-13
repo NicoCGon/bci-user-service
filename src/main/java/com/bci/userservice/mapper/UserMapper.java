@@ -12,10 +12,8 @@ public class UserMapper {
 
     public static User mapToUser(UserDto userDto){
         LocalDateTime now = LocalDateTime.now();
-        UUID userId = UUID.randomUUID();
 
         return User.builder()
-                .id(userId)
                 .email(userDto.getEmail())
                 .name(userDto.getName())
                 .password(Base64.getEncoder().encodeToString(userDto.getPassword().getBytes()))
@@ -23,7 +21,7 @@ public class UserMapper {
                 .modifiedAt(now)
                 .lastLoginAt(now)
                 .isActive(Boolean.TRUE)
-                .token(userId.toString())
+                .token(UUID.randomUUID().toString())
                 .build();
     }
 
